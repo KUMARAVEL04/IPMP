@@ -5,17 +5,14 @@ public:
     void moveZeroes(vector<int>& nums) {
         vector<int> temp;
         int z=0;
-        for(int i=0;i<nums.size();i++){
-            if(nums[i]!=0){
-                temp.push_back(nums[i]);
-            }
-            else{
+        for(int i=nums.size()-1;i>=0;i--){
+            if(nums[i]==0){
+                nums.erase(nums.begin()+i);
                 z++;
             }
         }
         for(int i=0;i<z;i++){
-            temp.push_back(0);
+            nums.push_back(0);
         }
-        nums=temp;
     }
 };

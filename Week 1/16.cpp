@@ -7,27 +7,19 @@ using namespace std;
 class Solution {
   public:
     void sort012(vector<int>& nums) {
-        int a=0;
-        int b=0;
-        int c=0;
-        for(int num: nums){
-            if(num==0){
-                a++;
-                
-            }
-            if(num==1){
-                b++;
-            }
-        }
-        for(int i=0;i<nums.size();i++){
-            if(i<a){
-                nums[i]=0;
-            }
-            else if(i<a+b){
-                nums[i]=1;
-            }
-            else{
-                nums[i]=2;
+        int n =nums.size();
+        for(int j=0;j<n;j++){
+            int x=1;
+            for(int i=0;i<n;i++){
+                if(nums[i]*x>0){
+                    x*=-1;
+                }
+                else if(i<n-1){
+                    int temp = nums[i];
+                    nums[i]=nums[i+1];
+                    nums[i+1]=temp;
+                    x*=-1;
+                }
             }
         }
     }
